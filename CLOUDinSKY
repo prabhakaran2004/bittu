@@ -1,0 +1,59 @@
+exp 6 cmd
+sudo su -
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+docker --version
+service docker start
+docker pull httpd
+docker run --name Apache-server -p 80:80 -d httpd
+history
+
+---------------------------------------------------------------
+
+exp7
+sudo su -
+
+yum update -y
+yum install -y docker awscli
+docker --version
+docker images
+service docker start
+docker images
+docker pull nginx
+docker images
+
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/k6g3h1i8
+aws configure
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/k6g3h1i8
+
+docker tag nginx:latest public.ecr.aws/k6g3h1i8/myrepo:latest
+docker push public.ecr.aws/k6g3h1i8/myrepo:latest
+history
+
+-------------------------------------------------------
+
+exp 9 cmd
+sudo su -
+yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+docker version
+docker ps
+docker pull httpd
+
+docker run -d -p 80:80 httpd
+docker exec -it <httpd-address> bash
+cd htdocs
+ls
+if index.html is showing then it is running successful
+then
+cat > index.html
+hello
+
+to save 
+press enter key and press ctrl+D
+that's it
+then copy the public ipv4 address and check it
+
+--
